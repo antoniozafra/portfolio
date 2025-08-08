@@ -310,10 +310,12 @@ img.right-arrow{
     margin: 0 auto;
     border-radius: 1rem;
     float: left;
+    /* position: relative; */
 
     opacity: 0.9;
 
 }
+
 
 .item__left-link{
     position: absolute;
