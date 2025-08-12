@@ -44,8 +44,8 @@ export const english = () => {
   //FOOTER
   document.querySelector(".footer__text").innerHTML =
     "if (doYouLike) { contactMe(); }";
-  document.querySelector(".footer__subtitle-text").innerHTML =
-    "Made in With ❤️";
+  // document.querySelector(".footer__subtitle-text").innerHTML =
+  //   "Made in With ❤️";
 
   //MENU RESPONSIVE
   const menu__links__responsive__ENGLISH = document.querySelectorAll(

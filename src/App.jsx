@@ -31,11 +31,6 @@ function App() {
 }, [isloading, languaje]);
 
 
-  // useEffect(() => {
-  //   if (!isloading && languaje === "english") {
-  //     english();
-  //   }
-  // }, [languaje]);
 
   
   /*UseEfecct que se iniciar conforme ejecutamos la app,
@@ -86,7 +81,7 @@ function App() {
     setTimeout(() => {
       
       setIsLoading(false);        // Desactivamos loader
-    }, 1500);
+    }, 4000);
     
   };
 
@@ -127,11 +122,12 @@ const handleOpenMenuResponsive = () => {
         <>
         
         <div className="loader ">
+         <div className="loader__subtitle">
+          
+            <span className="loader__subtitle-text"></span>
+          </div>
 
         </div>
-         <div className="loader__subtitle">
-            <span className="loader__subtitle-text">Creado con Love</span>
-          </div>
       
         </>
       )
@@ -576,9 +572,9 @@ const handleOpenMenuResponsive = () => {
             </a>
           </div>
         </div>
-         <div className="footer__subtitle">
+         {/* <div className="footer__subtitle">
             <h4 className="footer__subtitle-text">Creado con ❤️</h4>
-          </div>
+          </div> */}
 
 
       </footer>
