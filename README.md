@@ -1,6 +1,6 @@
-# Bienvenido a mi Portfolio
+# Welcome to my Portfolio
 
-Este es un archivo README.md puede obviarlo ya que este proyecto no necesita ninguna configuracion adiccional
+This is a file README.md
 
-Puedes Visitarlo Aquí [TS template](https://antoniozafra.github.io)
+Click here to visit online -->[TS template](https://antoniozafra.github.io)
 
