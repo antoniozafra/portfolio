@@ -490,7 +490,8 @@ img.right-arrow{
     inset: 0;
     
     background-image: url(../img/me.png);
-    background-size: contain;
+    /* background-size: contain; */
+    background-size: inherit;
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -955,14 +956,3 @@ img.menu__box-responsive-image-link
 
     pointer-events: none;
 } */
-
-
-
-
-
-
-
-
-
-
-

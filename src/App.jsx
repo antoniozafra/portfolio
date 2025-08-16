@@ -76,6 +76,7 @@ function App() {
     
     setIsLoading(true);           // Activamos loader
     setLanguaje(lang);            // Cambiamos idioma
+    handleCloseMenuResponsive();  //Desactivamos el blur del index           
     if (lang === "english") english();
     
     setTimeout(() => {
