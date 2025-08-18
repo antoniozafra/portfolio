@@ -491,7 +491,7 @@ img.right-arrow{
     
     background-image: url(../img/me.png);
     /* background-size: contain; */
-    background-size: inherit;
+    background-size: contain;
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-attachment: scroll;

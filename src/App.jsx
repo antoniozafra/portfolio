@@ -356,8 +356,8 @@ const handleOpenMenuResponsive = () => {
               Desarrollador web Full Stack, residente de Córdoba
             </p>
             <span className="text-right-subtitle">
-              "Transformo ideas en sitios y aplicaciones que conectan con las
-              personas y cumplen objetivos concretos."
+              "Transformo ideas en software que conecta con las
+              personas y cumple sus objetivos."
             </span>
             <a href="" className="item__left-link">
               <span className="item__left-link-text">Contacto</span>
@@ -430,9 +430,6 @@ const handleOpenMenuResponsive = () => {
               <div className="technologies__item">MYSQL</div>
               <div className="technologies__item">JAVA</div>
               <div className="technologies__item">REACT</div>
-              <div className="technologies__item">EXPRESS.JS</div>
-              <div className="technologies__item">WORDPRESS</div>
-              <div className="technologies__item">WORDPRESS</div>
             </div>
 
             <a href="" className="item__left-link">
@@ -460,11 +457,8 @@ const handleOpenMenuResponsive = () => {
               <div className="technologies__item">HTML</div>
               <div className="technologies__item">CSS</div>
               <div className="technologies__item">JAVASCRIPT</div>
-              <div className="technologies__item">MYSQL</div>
               <div className="technologies__item">JAVA</div>
               <div className="technologies__item">REACT</div>
-              <div className="technologies__item">EXPRESS.JS</div>
-              <div className="technologies__item">WORDPRESS</div>
               <div className="technologies__item">WORDPRESS</div>
             </div>
 
