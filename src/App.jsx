@@ -116,6 +116,15 @@ const handleOpenMenuResponsive = () => {
 
 }
 
+const handleClickItem  = () => {
+  console.log("cerrammos el menu")
+
+  const menuResponsive = document.getElementById('box__menu-responsive');
+  menuResponsive.classList.remove("open-responsive");
+      setCloseResposiveMenu(false);
+
+}
+
 
     //Creamos un condicional para comprobar y mostrar el loader al ejecutar el componente
     if(isloading) {
@@ -157,7 +166,8 @@ const handleOpenMenuResponsive = () => {
                      ${selectedResponsive === "inicio" ? "selected-responsive " : ""}`}
                   onClick={() =>{
                        handleClickMenu("inicio");
-                       handleClickMenuResponsive()
+                       handleClickMenuResponsive();
+                       handleClickItem();
                       }}
                 >
                   Inicio
@@ -169,7 +179,8 @@ const handleOpenMenuResponsive = () => {
                      ${selectedResponsive === "proyectos" ? "selected-responsive " : ""}`}
                      onClick={() =>{
                        handleClickMenu("proyectos");
-                       handleClickMenuResponsive()
+                       handleClickMenuResponsive();
+                       handleClickItem();
                       }}
                      >
                   Proyectos
@@ -182,7 +193,9 @@ const handleOpenMenuResponsive = () => {
 
                   onClick={() =>{
                        handleClickMenu("contacto");
-                       handleClickMenuResponsive()
+                       handleClickMenuResponsive();
+                      handleClickItem();
+
                       }}
                 >
                   Contacto
