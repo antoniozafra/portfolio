@@ -494,7 +494,7 @@ img.right-arrow{
     background-size: contain;
     background-position: 50% 100%;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
     z-index: -100;
 
       filter:  opacity(1); /* aquí tus filtros */

@@ -403,8 +403,19 @@ const handleClickItem  = () => {
               <div className="technologies__item">ELEMENTOR</div>
               <div className="technologies__item">PHP</div>
             </div>
+{/* 
+            <div>
+              <a href="" className="item__left-link proyect-link">
+              Ver Online
+              <img
+                className="right-arrow"
+                src="./src/assets/img/icons/arrow_right.png"
+                alt=""
+              />
+            </a>
+            </div> */}
 
-            <a href="" className="item__left-link">
+            <a href="" className="item__left-link proyect-link">
               Ver Online
               <img
                 className="right-arrow"
@@ -445,7 +456,7 @@ const handleClickItem  = () => {
               <div className="technologies__item">REACT</div>
             </div>
 
-            <a href="" className="item__left-link">
+            <a href="" className="item__left-link proyect-link proyect-link-right">
               Ver Demo
               <img
                 className="right-arrow"
@@ -475,7 +486,7 @@ const handleClickItem  = () => {
               <div className="technologies__item">WORDPRESS</div>
             </div>
 
-            <a href="" className="item__left-link">
+            <a href="" className="item__left-link  proyect-link proyect-link-right">
               Ver Demo
               <img
                 className="right-arrow"
