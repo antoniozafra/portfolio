@@ -5,6 +5,9 @@ import {english} from './translation/english';
 function App() {
 
 
+  //IMAGES ROUTES
+  const  githubImage = './src/assets/img/icons/github.png';
+
   /*Creamos un useState para controlar el valor del menu, 
   y le añadimos con un ternario la clase selected  */
   const [selected, setSelected ] = useState();
@@ -577,7 +580,8 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src="./src/assets/img/icons/github.png"
+                // src="./src/assets/img/icons/github.png"
+                src={githubImage}
                 alt=""
               />
             </a>
