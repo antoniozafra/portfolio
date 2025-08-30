@@ -948,11 +948,21 @@ img.menu__box-responsive-image-link
 
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-text, #000) !important;     /* color del texto */
+  caret-color: var(--color-text, #000) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-background-1, #fff) inset !important; /* fondo */
+  box-shadow: 0 0 0px 1000px var(--color-background-1, #fff) inset !important;         /* fallback */
+  transition: background-color 5000s ease-in-out 0s !important; /* truco para "bloquear" el cambio */
+}
 
 
-/*ESTAS REGLAS DE CSS SE UTILIZARAN EN EL CONDICIONAL CUANDO HAGAMOS CLICK EN EL BOTON PARA DESPLEGAR EL MENU REPONSIVE*/
-/* #index, .works, .contact, .footer {
-    filter: blur(1rem) grayscale(0.6);
 
-    pointer-events: none;
-} */

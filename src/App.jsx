@@ -5,7 +5,6 @@ import {english} from './translation/english';
 function App() {
 
 
-  
   /*Creamos un useState para controlar el valor del menu, 
   y le añadimos con un ternario la clase selected  */
   const [selected, setSelected ] = useState();
@@ -22,8 +21,6 @@ function App() {
   const [closeResponsiveMenu, setCloseResposiveMenu] = useState();
 
 
-
-
   useEffect(() => {
   if (!isloading && languaje === "english") {
     english();
@@ -32,7 +29,6 @@ function App() {
 
 
 
-  
   /*UseEfecct que se iniciar conforme ejecutamos la app,
      para establecer el boton de inicio seleccionado */ 
     useEffect(() => {
@@ -44,8 +40,6 @@ function App() {
   }, []);
 
   
-  
-
 
   useEffect(() => {
 
@@ -65,12 +59,11 @@ function App() {
     setselectedResponsive(name);
     
   };
+
   const handleClickMenuResponsive = () => {
     setOpenResposiveMenu(false);
 
   };
-
-
   
   const handleClickLanguaje = (lang) => {
     
@@ -123,6 +116,22 @@ const handleClickItem  = () => {
   menuResponsive.classList.remove("open-responsive");
       setCloseResposiveMenu(false);
 
+}
+
+const handdleSubmitForm = (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const description = document.getElementById("description");
+
+  const data = {
+    name: name,
+    email: email, 
+    description: description
+  }
+
+  console.log(data);
 }
 
 
@@ -527,7 +536,7 @@ const handleClickItem  = () => {
           <span className="contact__right-title">Contacta Conmigo</span>
 
           <div className="contact__right-form-box">
-            <form className="contact__right-form-box" action="">
+            <form className="contact__right-form-box" method="POST" onSubmit={handdleSubmitForm}>
               <input
                 className="form__input form__input-name"
                 type="text"
@@ -538,17 +547,19 @@ const handleClickItem  = () => {
               <input
                 className="form__input form__input-email"
                 type="email"
-                name=""
+                name="email"
                 id="email"
                 placeholder="Correo Electronico"
               />
               <textarea
                 className="form__textarea form__textarea-describe"
                 wrap="soft"
+                name="description"
+                id="description"
                 placeholder="Explica un poco más tu idea"
               ></textarea>
 
-              <input className="form__button" type="button" value="Enviar" />
+              <input className="form__button" type="submit" value="Enviar" />
             </form>
           </div>
         </div>
