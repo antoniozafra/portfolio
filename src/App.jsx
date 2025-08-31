@@ -232,7 +232,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src={githubImageLink}
+                src={linkedinImageLink}
                 alt=""
               />
             </a>

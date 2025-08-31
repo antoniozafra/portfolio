@@ -486,7 +486,7 @@ img.right-arrow{
     position: absolute;
     inset: 0;
     
-    background-image: url(./public/img/me.png);
+    background-image: url(./img/me.png);
     /* background-size: contain; */
     background-size: contain;
     background-position: 50% 100%;
