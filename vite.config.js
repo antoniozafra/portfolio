@@ -1,14 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
-  
-  //Establecemos el puerto 3000
-  server: {
-    port:3000,
-  },
-  base: "/portfolio/",   // 👈 muy importante
-  
+  base: '/portfolio/', // <- nombre exacto de tu repo
   plugins: [react()],
-})
+});

@@ -7,18 +7,18 @@ function App() {
 
   //IMAGES ROUTES
   
-  const  arrowRightImageLink =  '/img/icons/arrow_right.png';
-  const crossCloseImageLink = '/img/icons/cross-close.png';
-  const downArrowImageLink = '/img/icons/down-arrow.png';
-  const flagSpainImageLink = '/img/icons/flag-spain.png';
-  const  githubImageLink = '/img/icons/github.png';
-  const linkedinImageLink = '/img/icons/linkedin.png';
-  const menuResponsiveOpenImageLink = '/img/icons/menu-responsive-open.png';
-  const flagEnglishImageLink = '/img/icons/reino-unido.png';
-  const whatshappImageLink = '/img/icons/whatsapp.png';
-  const exampleWorkImageLink = '/img/example-work1.png';
-  const meImageLink = '/img/icons/me.png';
-  const podadeolivosImageLink = '/img/podadeolivos-frameset.png';
+  const  arrowRightImageLink =  './img/icons/arrow_right.png';
+  const crossCloseImageLink = './img/icons/cross-close.png';
+  const downArrowImageLink = './img/icons/down-arrow.png';
+  const flagSpainImageLink = './img/icons/flag-spain.png';
+  const  githubImageLink = './img/icons/github.png';
+  const linkedinImageLink = './img/icons/linkedin.png';
+  const menuResponsiveOpenImageLink = './img/icons/menu-responsive-open.png';
+  const flagEnglishImageLink = './img/icons/reino-unido.png';
+  const whatshappImageLink = './img/icons/whatsapp.png';
+  const exampleWorkImageLink = './img/example-work1.png';
+  const meImageLink = './img/icons/me.png';
+  const podadeolivosImageLink = './img/podadeolivos-frameset.png';
   
 
   /*Creamos un useState para controlar el valor del menu, 
@@ -232,8 +232,8 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src={linkedinImageLink}
-                alt=""
+                src={githubImageLink}
+                alt="Github Image"
               />
             </a>
           </div>
