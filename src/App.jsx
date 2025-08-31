@@ -7,18 +7,18 @@ function App() {
 
   //IMAGES ROUTES
   
-  const  arrowRightImageLink = './public/img/icons/arrow_right.png';
-  const crossCloseImageLink = './public/img/icons/cross-close.png';
-  const downArrowImageLink = './public/img/icons/down-arrow.png';
-  const flagSpainImageLink = './public/img/icons/flag-spain.png';
-  const  githubImageLink = './public/img/icons/github.png';
-  const linkedinImageLink = './public/img/icons/linkedin.png';
-  const menuResponsiveOpenImageLink = './public/img/icons/menu-responsive-open.png';
-  const flagEnglishImageLink = './public/img/icons/reino-unido.png';
-  const whatshappImageLink = './public/img/icons/whatsapp.png';
-  const exampleWorkImageLink = './public/img/example-work1.png';
-  const meImageLink = './public/img/icons/me.png';
-  const podadeolivosImageLink = './public/img/podadeolivos-frameset.png';
+  const  arrowRightImageLink =  '/img/icons/arrow_right.png';
+  const crossCloseImageLink = '/img/icons/cross-close.png';
+  const downArrowImageLink = '/img/icons/down-arrow.png';
+  const flagSpainImageLink = '/img/icons/flag-spain.png';
+  const  githubImageLink = '/img/icons/github.png';
+  const linkedinImageLink = '/img/icons/linkedin.png';
+  const menuResponsiveOpenImageLink = '/img/icons/menu-responsive-open.png';
+  const flagEnglishImageLink = '/img/icons/reino-unido.png';
+  const whatshappImageLink = '/img/icons/whatsapp.png';
+  const exampleWorkImageLink = '/img/example-work1.png';
+  const meImageLink = '/img/icons/me.png';
+  const podadeolivosImageLink = '/img/podadeolivos-frameset.png';
   
 
   /*Creamos un useState para controlar el valor del menu, 
