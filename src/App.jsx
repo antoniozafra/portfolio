@@ -17,7 +17,7 @@ function App() {
   const flagEnglishImageLink = './img/icons/reino-unido.png';
   const whatshappImageLink = './img/icons/whatsapp.png';
   const exampleWorkImageLink = './img/example-work1.png';
-  const meImageLink = './img/icons/me.png';
+  // const meImageLink = './img/icons/me.png';
   const podadeolivosImageLink = './img/podadeolivos-frameset.png';
   
 
