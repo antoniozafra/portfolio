@@ -450,10 +450,7 @@ img.right-arrow{
 
 }
 
-.footer_subtitle{
-    /* margin: 0 auto; */
 
-}
 
 .footer__subtitle-text{
     position: relative;
@@ -489,7 +486,7 @@ img.right-arrow{
     position: absolute;
     inset: 0;
     
-    background-image: url(../img/me.png);
+    background-image: url(./public/img/me.png);
     /* background-size: contain; */
     background-size: contain;
     background-position: 50% 100%;
