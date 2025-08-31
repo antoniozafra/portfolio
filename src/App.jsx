@@ -6,7 +6,20 @@ function App() {
 
 
   //IMAGES ROUTES
-  const  githubImage = './src/assets/img/icons/github.png';
+  
+  const  arrowRightImageLink = './public/img/icons/arrow_right.png';
+  const crossCloseImageLink = './public/img/icons/cross-close.png';
+  const downArrowImageLink = './public/img/icons/down-arrow.png';
+  const flagSpainImageLink = './public/img/icons/flag-spain.png';
+  const  githubImageLink = './public/img/icons/github.png';
+  const linkedinImageLink = './public/img/icons/linkedin.png';
+  const menuResponsiveOpenImageLink = './public/img/icons/menu-responsive-open.png';
+  const flagEnglishImageLink = './public/img/icons/reino-unido.png';
+  const whatshappImageLink = './public/img/icons/whatsapp.png';
+  const exampleWorkImageLink = './public/img/example-work1.png';
+  const meImageLink = './public/img/icons/me.png';
+  const podadeolivosImageLink = './public/img/podadeolivos-frameset.png';
+  
 
   /*Creamos un useState para controlar el valor del menu, 
   y le añadimos con un ternario la clase selected  */
@@ -219,7 +232,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src="./src/assets/img/icons/github.png"
+                src={githubImageLink}
                 alt=""
               />
             </a>
@@ -229,7 +242,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src="./src/assets/img/icons/linkedin.png"
+                src = {linkedinImageLink}
                 alt=""
               />
             </a>
@@ -238,7 +251,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src="./src/assets/img/icons/whatsapp.png"
+                src={whatshappImageLink}
                 alt=""
               />
             </a>
@@ -249,8 +262,9 @@ const handdleSubmitForm = (e) => {
 
             <img 
               className="menu-close-img"
-               src="./src/assets/img/icons/cross-close.png" alt=""
-               onClick={() =>handleCloseMenuResponsive()} />
+              src={crossCloseImageLink}
+              alt=""
+              onClick={() =>handleCloseMenuResponsive()} />
 
         </div>
             
@@ -273,7 +287,7 @@ const handdleSubmitForm = (e) => {
                 className={`languaje-box-img ${
                   languaje === "spain" ? "selected-lang" : ""
                 }`}
-                src="../src/assets/img/icons/flag-spain.png"
+                src = {flagSpainImageLink}
                 alt="Bandera España"
                 // href="www.google.es"
                 onClick={() => {
@@ -286,7 +300,7 @@ const handdleSubmitForm = (e) => {
                 className={`languaje-box-img ${
                   languaje === "english" ? "selected-lang" : ""
                 }`}
-                src="../src/assets/img/icons/reino-unido.png"
+                src = {flagEnglishImageLink}
                 alt="Bandera Reino Unido"
                 onClick={() => {handleClickLanguaje("english"); handleCloseMenuResponsive()}}
               />
@@ -332,7 +346,7 @@ const handdleSubmitForm = (e) => {
             >
               <img
                 className="menu__box-responsive-image-link"
-                src="./src/assets/img/icons/menu-responsive-open.png"
+                src = {menuResponsiveOpenImageLink}
                 alt=""
                 onClick={() => handleOpenMenuResponsive()}
               />
@@ -350,7 +364,7 @@ const handdleSubmitForm = (e) => {
                 <a href="" className="item__link">
                   <img
                     className="link__image"
-                    src="./src/assets/img/icons/github.png"
+                    src = {githubImageLink}
                     alt=""
                   />
                 </a>
@@ -359,7 +373,7 @@ const handdleSubmitForm = (e) => {
                 <a href="" className="item__link">
                   <img
                     className="link__image"
-                    src="./src/assets/img/icons/linkedin.png"
+                    src = {linkedinImageLink}
                     alt=""
                   />
                 </a>
@@ -368,7 +382,7 @@ const handdleSubmitForm = (e) => {
                 <a href="" className="item__link">
                   <img
                     className="link__image"
-                    src="./src/assets/img/icons/whatsapp.png"
+                    src = {whatshappImageLink}
                     alt=""
                   />
                 </a>
@@ -388,7 +402,7 @@ const handdleSubmitForm = (e) => {
               <span className="item__left-link-text">Contacto</span>
               <img
                 className="right-arrow"
-                src="./src/assets/img/icons/arrow_right.png"
+                src = {arrowRightImageLink}
                 alt=""
               />
             </a>
@@ -415,23 +429,13 @@ const handdleSubmitForm = (e) => {
               <div className="technologies__item">ELEMENTOR</div>
               <div className="technologies__item">PHP</div>
             </div>
-{/* 
-            <div>
-              <a href="" className="item__left-link proyect-link">
-              Ver Online
-              <img
-                className="right-arrow"
-                src="./src/assets/img/icons/arrow_right.png"
-                alt=""
-              />
-            </a>
-            </div> */}
+
 
             <a href="" className="item__left-link proyect-link">
               Ver Online
               <img
                 className="right-arrow"
-                src="./src/assets/img/icons/arrow_right.png"
+                src = {arrowRightImageLink}
                 alt=""
               />
             </a>
@@ -439,7 +443,7 @@ const handdleSubmitForm = (e) => {
           <div className="work__item-right">
             <img
               className="item__right-image"
-              src="../src/assets/img/podadeolivos-frameset.png"
+              src = {podadeolivosImageLink}
             ></img>
           </div>
         </div>
@@ -449,7 +453,7 @@ const handdleSubmitForm = (e) => {
           <div className="work__item-right">
             <img
               className="item__right-image"
-              src="../src/assets/img/example-work1.png"
+              src={exampleWorkImageLink}
             ></img>
           </div>
           <div className="work__item-left">
@@ -472,7 +476,7 @@ const handdleSubmitForm = (e) => {
               Ver Demo
               <img
                 className="right-arrow"
-                src="./src/assets/img/icons/arrow_right.png"
+                src={arrowRightImageLink}
                 alt=""
               />
             </a>
@@ -502,7 +506,7 @@ const handdleSubmitForm = (e) => {
               Ver Demo
               <img
                 className="right-arrow"
-                src="./src/assets/img/icons/arrow_right.png"
+                src={arrowRightImageLink}
                 alt=""
               />
             </a>
@@ -510,7 +514,7 @@ const handdleSubmitForm = (e) => {
           <div className="work__item-right">
             <img
               className="item__right-image"
-              src="../src/assets/img/example-work1.png"
+              src={exampleWorkImageLink}
             ></img>
           </div>
         </div>
@@ -529,7 +533,7 @@ const handdleSubmitForm = (e) => {
             antoniozafra@gmail.com
             <img
               className="right-arrow"
-              src="./src/assets/img/icons/arrow_right.png"
+              src= {arrowRightImageLink}
               alt=""
             />
           </a>
@@ -580,8 +584,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                // src="./src/assets/img/icons/github.png"
-                src={githubImage}
+                src={githubImageLink}
                 alt=""
               />
             </a>
@@ -591,7 +594,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src="./src/assets/img/icons/linkedin.png"
+                src={linkedinImageLink}
                 alt=""
               />
             </a>
@@ -600,7 +603,7 @@ const handdleSubmitForm = (e) => {
             <a href="" className="item__link">
               <img
                 className="link__image"
-                src="./src/assets/img/icons/whatsapp.png"
+                src={whatshappImageLink}
                 alt=""
               />
             </a>
