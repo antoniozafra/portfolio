@@ -1,119 +1,95 @@
 import { Children, useEffect, useState } from "react";
-import {english} from './translation/english';
-
+import { english } from "./translation/english";
 
 function App() {
-
-
   //IMAGES ROUTES
-  
-  const  arrowRightImageLink =  './img/icons/arrow_right.png';
-  const crossCloseImageLink = './img/icons/cross-close.png';
-  const downArrowImageLink = './img/icons/down-arrow.png';
-  const flagSpainImageLink = './img/icons/flag-spain.png';
-  const  githubImageLink = './img/icons/github.png';
-  const linkedinImageLink = './img/icons/linkedin.png';
-  const menuResponsiveOpenImageLink = './img/icons/menu-responsive-open.png';
-  const flagEnglishImageLink = './img/icons/reino-unido.png';
-  const whatshappImageLink = './img/icons/whatsapp.png';
-  const exampleWorkImageLink = './img/example-work1.png';
+
+  const arrowRightImageLink = "./img/icons/arrow_right.png";
+  const crossCloseImageLink = "./img/icons/cross-close.png";
+  const downArrowImageLink = "./img/icons/down-arrow.png";
+  const flagSpainImageLink = "./img/icons/flag-spain.png";
+  const githubImageLink = "./img/icons/github.png";
+  const linkedinImageLink = "./img/icons/linkedin.png";
+  const menuResponsiveOpenImageLink = "./img/icons/menu-responsive-open.png";
+  const flagEnglishImageLink = "./img/icons/reino-unido.png";
+  const whatshappImageLink = "./img/icons/whatsapp.png";
+  const exampleWorkImageLink = "./img/example-work1.png";
   // const meImageLink = './img/icons/me.png';
-  const podadeolivosImageLink = './img/podadeolivos-frameset.png';
-  
+  const podadeolivosImageLink = "./img/podadeolivos-frameset.png";
 
   /*Creamos un useState para controlar el valor del menu, 
   y le añadimos con un ternario la clase selected  */
-  const [selected, setSelected ] = useState();
-  const [selectedResponsive, setselectedResponsive ] = useState();
-  
+  const [selected, setSelected] = useState();
+  const [selectedResponsive, setselectedResponsive] = useState();
+
   //Use state para controlar el valor del lenguaje en la app
-  const [languaje , setLanguaje] = useState("spain");
-  
+  const [languaje, setLanguaje] = useState("spain");
+
   //UseState para controlar el valor del loader de la web
   const [isloading, setIsLoading] = useState(true);
-  
+
   /*UseState para el menu resposive */
   const [openResponsiveMenu, setOpenResposiveMenu] = useState();
   const [closeResponsiveMenu, setCloseResposiveMenu] = useState();
 
-
   useEffect(() => {
-  if (!isloading && languaje === "english") {
-    english();
-  }
-}, [isloading, languaje]);
-
-
+    if (!isloading && languaje === "english") {
+      english();
+    }
+  }, [isloading, languaje]);
 
   /*UseEfecct que se iniciar conforme ejecutamos la app,
-     para establecer el boton de inicio seleccionado */ 
-    useEffect(() => {
-
+     para establecer el boton de inicio seleccionado */
+  useEffect(() => {
     handleClickMenu("inicio");
 
     setOpenResposiveMenu(false);
-    
   }, []);
 
-  
-
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
-       const timer = setTimeout(() => {
-          setIsLoading(false);
-      }, 2000 );
+    //Limpimos el loader
+    return () => clearTimeout(timer);
+  }, [isloading]);
 
-      //Limpimos el loader
-      return ()=> clearTimeout(timer);
-
-
-    }, [isloading]);
-
-  
   const handleClickMenu = (name) => {
     setSelected(name);
     setselectedResponsive(name);
-    
   };
 
   const handleClickMenuResponsive = () => {
     setOpenResposiveMenu(false);
-
   };
-  
+
   const handleClickLanguaje = (lang) => {
-    
-    setIsLoading(true);           // Activamos loader
-    setLanguaje(lang);            // Cambiamos idioma
-    handleCloseMenuResponsive();  //Desactivamos el blur del index           
+    setIsLoading(true); // Activamos loader
+    setLanguaje(lang); // Cambiamos idioma
+    handleCloseMenuResponsive(); //Desactivamos el blur del index
     if (lang === "english") english();
-    
+
     setTimeout(() => {
-      
-      setIsLoading(false);        // Desactivamos loader
+      setIsLoading(false); // Desactivamos loader
     }, 4000);
-    
   };
 
   const handleCloseMenuResponsive = () => {
     setCloseResposiveMenu(true);
 
-
-     const blurLayer = document.getElementById("layer-blur");
+    const blurLayer = document.getElementById("layer-blur");
     blurLayer.classList.remove("blur");
 
     const boxMenuResponsive = document.getElementById("box__menu-responsive");
     boxMenuResponsive.classList.remove("open-responsive");
     boxMenuResponsive.classList.add("close-responsive");
-  
-  }
-  
+  };
 
-const handleOpenMenuResponsive = () => {
-  
+  const handleOpenMenuResponsive = () => {
     setOpenResposiveMenu(true);
 
-     const blurLayer = document.getElementById("layer-blur");
+    const blurLayer = document.getElementById("layer-blur");
     blurLayer.classList.add("blur");
 
     const boxMenuResponsive = document.getElementById("box__menu-responsive");
@@ -121,79 +97,61 @@ const handleOpenMenuResponsive = () => {
     boxMenuResponsive.classList.add("open-responsive");
     const body = document.body;
 
-    body.style.overflow = 'hidden';
-
-}
-
-const handleClickItem  = () => {
-  console.log("cerrammos el menu")
-
-  const menuResponsive = document.getElementById('box__menu-responsive');
-  menuResponsive.classList.remove("open-responsive");
-      setCloseResposiveMenu(false);
-
-}
-
-const handdleSubmitForm = async (e) => {
-  e.preventDefault();
-
-  // const name = document.getElementById("name").value;
-  // const email = document.getElementById("email").value;
-  // const description = document.getElementById("description").value;
-
-  const data = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value, 
-    description: document.getElementById("description").value
+    body.style.overflow = "hidden";
   };
 
+  const handleClickItem = () => {
+    console.log("cerrammos el menu");
 
-   console.log(JSON.stringify(data));
-  
+    const menuResponsive = document.getElementById("box__menu-responsive");
+    menuResponsive.classList.remove("open-responsive");
+    setCloseResposiveMenu(false);
+  };
 
-  
+  const handdleSubmitForm = async (e) => {
+    e.preventDefault();
 
-  try {
+    // const name = document.getElementById("name").value;
+    // const email = document.getElementById("email").value;
+    // const description = document.getElementById("description").value;
+
+    const data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      description: document.getElementById("description").value,
+    };
+
+    console.log(JSON.stringify(data));
+
+    try {
       const res = await fetch("http://localhost:5000/api/sendmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          
         },
-         body : JSON.stringify(data)
+        body: JSON.stringify(data),
       });
 
       const result = await res.json();
-    console.log("Respuesta del backend:", result);
-
-
-      
+      console.log("Respuesta del backend:", result);
     } catch (err) {
       return console.error("Error:", err);
     }
-  
-  
-}
+  };
 
-
-    //Creamos un condicional para comprobar y mostrar el loader al ejecutar el componente
-    if(isloading) {
-      return (
-        <>
-        
+  //Creamos un condicional para comprobar y mostrar el loader al ejecutar el componente
+  if (isloading) {
+    return (
+      <>
         <div className="loader ">
-         <div className="loader__subtitle">
-          
+          <div className="loader__subtitle">
             <span className="loader__subtitle-text"></span>
           </div>
-
         </div>
-      
-        </>
-      )
-    }
+      </>
+    );
+  }
 
-  
   return (
     <>
       {/* INDEX DE LA APLICACION*/}
@@ -300,7 +258,11 @@ const handdleSubmitForm = async (e) => {
           {/* NAVBAR*/}
           <nav className="menu__box">
             <div className="menu__box-left">
-              <a href="" className="menu__box-left-text">
+              <a
+                href="./public/cv_antoniozafra.pdf"
+                download="cv_antoniozafra.pdf"
+                className="menu__box-left-text"
+              >
                 Descargar CV
               </a>
 
@@ -567,12 +529,15 @@ const handdleSubmitForm = async (e) => {
                   placeholder="Explica un poco más tu idea"
                 ></textarea>
 
-                <button type="submit">
-              <a href="" className="form__button">
-                <span className="form__button-text">Enviar</span>
-                <img className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a>
-
+                <button className="form__button " type="submit">
+                  <a href="" >
+                    <span className="form__button-text">Enviar Correo</span>
+                    <img
+                      className="right-arrow"
+                      src={arrowRightImageLink}
+                      alt=""
+                    />
+                  </a>
                 </button>
               </form>
             </div>
