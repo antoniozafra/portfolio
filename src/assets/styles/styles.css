@@ -41,6 +41,8 @@ html, body {
   overflow-x: hidden;
 }
 
+
+
 body{
     background-color: var(--color-background-1);
 
@@ -123,13 +125,17 @@ img.selected-lang{
 /*CONTACT*/
 .contact{
     width: 100vw;
-    height: auto;
+    height: 100vh;
 
     display: flex;
-    padding-top: 30rem;
-    padding-bottom: 20rem;
+    flex-direction: row;
+    padding-top: 12rem;
+    /* padding-bottom: 20rem; */
 
 }
+
+
+
 
 .contact__left{
     
@@ -193,6 +199,19 @@ span.proyect-link{
     background-color: var(--color-background-1);
     color: var(--color-text);
     border-color: var(--color-secondary);
+}
+
+.proyect-link:hover div.work__item {
+    transform: scale(1.2);
+}
+
+.work__item:has(.item__left-link:hover){
+
+    transform: scale(1.05);
+
+    transition: all 200ms ease-in;
+}
+.item__left-link:hover img > .work__item{
 }
 
 
@@ -261,10 +280,13 @@ img.right-arrow{
 }
 
 .contact__right-form-box{
-    margin-right: 6rem;
+    position: relative;
+
     display: flex;
     flex-direction: column;
     text-decoration: none;
+
+    margin-right: 6rem;
 }
 
 .form__input,
@@ -349,11 +371,123 @@ img.right-arrow{
 }
 
 
+/*FORM MESSAGE BUTTON*/
+
+.contact__message{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 1;
+    width: 60%;
+    height: 20dvh;
+    top: 20%;
+    left: 25%;
+
+    border-radius: 1rem;
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-text);
+    
+}
+
+.contact__message-title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-background-1);
+}
+.contact__message-subtitle{
+    
+    color: var(--color-text);
+}
+
+.contact__message-close img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+}
 
 /*WORKS*/
+.works__title-container{
+    width: 100;
+    margin: 0 auto;
+
+    
+}
+.contact__title-container{
+     width: auto;
+   /* display: flex;
+   width: 100%; */
+   
+}
+
+.contact__title-container-responsive{
+    display: none;
+}
+
+.contact__title-text{
+    font-size: 2.5em;
+    top: -2em;
+    left:0rem;
+    position: relative;
+    
+    border-radius: 0.5em;
+    padding: 0.2em;
+    
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-secondary);
+    text-underline-offset: 0.1em;
+    
+    
+    
+    
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.works__title-text{
+    font-size: 2.5em;
+    position: absolute;
+    top: 2em;
+    left: 12em;
+    
+    border-radius: 0.5em;
+    padding: 0.2em;
+
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-secondary);
+    text-underline-offset: 0.1em;
+
+
+
+
+    font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+    
+
+ 
+
+}
+    
+
+
+
 .works{
     width: 100%;
     margin: 0 auto;
+
+    position: relative;
+
     
     background-color: var(--color-background-2);
     padding-bottom: 15rem;
@@ -368,8 +502,6 @@ img.right-arrow{
     width: 80%;
     margin: 0 auto;
 
-
-    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -380,6 +512,8 @@ img.right-arrow{
 
     background: linear-gradient(360deg,rgba(52, 53, 71, 0.89) 0%, rgba(37, 39, 52, 1) 50%);
     border-radius: 5rem;
+
+    transition: all 100ms ease-in;
 }
 
 .work__item-left{
@@ -481,6 +615,11 @@ img.right-arrow{
     padding: 5rem 0rem;
 }
 
+.footer-social-container-responsive{
+
+    filter: invert(1);
+}
+
 .footer__social-container,
 .index__social-container{
     display: flex;
@@ -490,7 +629,7 @@ img.right-arrow{
 }
 
 .social-container__item{
-    
+    /* filter: invert(1); */
     transition: all 300ms ease-in-out;
 }
 
@@ -530,16 +669,16 @@ img.right-arrow{
 
 }
 
+
+
 /*INDEX*/
 .index{
     width: 80%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100vh;
     margin: 0 auto;
 
-    
-    
     padding-top: 10rem;
-    
     
 }
 
@@ -550,7 +689,7 @@ img.right-arrow{
     
     background-image: url(/img/me.png);
     /* background-size: contain; */
-    background-size: contain;
+    background-size: 35%;
     background-position: 50% 100%;
     background-repeat: no-repeat;
     /* background-attachment: scroll; */
@@ -752,7 +891,7 @@ a.item__left-link {
 .footer img {
      filter: invert();;
 
-}
+} 
 
 
 
@@ -837,9 +976,6 @@ padding-top: 50vh;
     
 }
 
-.social-container__item:hover{
-    filter: invert(1);
-}
 
 
 .open-responsive{

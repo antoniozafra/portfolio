@@ -1,5 +1,8 @@
 import { Children, useEffect, useState } from "react";
 import { english } from "./translation/english";
+import { motion } from "motion/react";
+
+
 
 function App() {
   //IMAGES ROUTES
@@ -111,6 +114,10 @@ function App() {
   const handdleSubmitForm = async (e) => {
     e.preventDefault();
 
+    console.log('enviado')
+    
+     
+
     // const name = document.getElementById("name").value;
     // const email = document.getElementById("email").value;
     // const description = document.getElementById("description").value;
@@ -134,6 +141,16 @@ function App() {
 
       const result = await res.json();
       console.log("Respuesta del backend:", result);
+
+      /*FILTAR RESPUESTA,  Y MOSTRAR MENSAJE */
+
+      return (
+        <>
+        <p>Correo enviado correctamente</p>
+        </>
+      )
+
+      
     } catch (err) {
       return console.error("Error:", err);
     }
@@ -143,11 +160,12 @@ function App() {
   if (isloading) {
     return (
       <>
-        <div className="loader ">
+      
+        <motion.div animate={{opacity : 0.5}} className="loader ">
           <div className="loader__subtitle">
             <span className="loader__subtitle-text"></span>
           </div>
-        </div>
+        </motion.div>
       </>
     );
   }
@@ -259,7 +277,7 @@ function App() {
           <nav className="menu__box">
             <div className="menu__box-left">
               <a
-                href="./public/cv_antoniozafra.pdf"
+                href="/portfolio/cv_antoniozafra.pdf"
                 download="cv_antoniozafra.pdf"
                 className="menu__box-left-text"
               >
@@ -381,7 +399,7 @@ function App() {
               </span>
               <a href="" className="item__left-link">
                 <span className="item__left-link-text">¿Hablamos?</span>
-                <img className="right-arrow" src={arrowRightImageLink} alt="" />
+                <img className="right-arrow index-arrow" src={arrowRightImageLink} alt="" />
               </a>
             </div>
           </div>
@@ -390,6 +408,14 @@ function App() {
         {/*TRABAJOS */}
 
         <div className="works" id="proyectos">
+
+        <div className="works__title-container">
+
+            <span className="works__title-text">{`- Proyectos </>`}</span>
+
+        </div>
+
+
           {/*WORK 1 */}
           <div className="work__item">
             <div className="work__item-left">
@@ -407,7 +433,7 @@ function App() {
                 <div className="technologies__item">PHP</div>
               </div>
 
-              <a href="" className="item__left-link ">
+              <a href="https://www.podadeolivos.com" target="_blank" className="item__left-link ">
                 <span className="proyect-link">Visitar Web</span>
                 <img className="right-arrow" src={arrowRightImageLink} alt="" />
               </a>
@@ -484,8 +510,25 @@ function App() {
         </div>
 
         {/*CONTACTO*/}
+
         <section className="contact" id="contacto">
+
+       
+        <div className="contact__title-container-responsive">
+
+            <span className="contact__title-text">{`- ¿Hablamos? </>`}</span>
+
+        </div>
+        
+
           <div className="contact__left">
+            
+        <div className="contact__title-container">
+
+            <span className="contact__title-text">{`- ¿Hablamos? </>`}</span>
+
+        </div>
+
             <p className="contact__left-title">¿Creamos un proyecto? </p>
 
             <span className="contact__left-subtitle">
@@ -502,7 +545,18 @@ function App() {
           <div className="contact__right">
             <span className="contact__right-title">Contacta Conmigo</span>
 
-            <div className="contact__right-form-box">
+            <div className="contact__right-form-box ">
+
+                {/* <div className="contact__message hide">
+                  <span className="contact__message-title">Mensaje Enviado</span>
+                  <span className="contact__message-subtitle">Gracias, me pondre en contacto contigo</span>
+
+                  <a className="contact__message-close">
+                    
+                  <img className="contact__message-cross" src={crossCloseImageLink} alt="" />
+                  </a>
+                </div> */}
+
               <form
                 className="contact__right-form-box"
                 onSubmit={handdleSubmitForm}

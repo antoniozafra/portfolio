@@ -18,6 +18,11 @@
   .item__left-link {
     width: 95%;
   }
+
+  .contact__title-container-responsive{
+
+    display: hidden;
+  }
 }
 
 @media (max-width: 1700px) {
@@ -30,7 +35,7 @@
 @media (max-width: 1440px) {
   .index {
     width: 90%;
-    height: 85vh;
+    height: 100vh;
 
     padding-top: 5rem;
   }
@@ -52,17 +57,35 @@
     gap: 5rem;
   }
 
+  .works__title-text{
+    left: 20rem;
+  }
+
   .contact {
     margin: 0 auto;
     /* height: 100vh; */
     width: 60%;
-    padding-top: 20rem;
-    padding-bottom: 15rem;
+    /* padding-top: 12rem; */
+    /* padding-bottom: 10rem; */
   }
+
+  /* .contact__title-container-responsive{
+
+    display: block;
+  } */
+
+  .contact__title-container-responsive > .contact__title-text{
+    top: -4rem;
+    left: -30rem;
+}
 
   .contact__left {
     padding-left: 0rem;
   }
+
+  a.contact__left-link {
+    font-size: 2.5em;
+}
 
   .contact__right {
     padding-right: 0rem;
@@ -173,6 +196,16 @@
     padding-top: 3rem;
   }
 
+.works__title-text{
+  left: 12rem;
+}
+
+.contact__title-container-responsive{
+
+    display: block;
+  }
+
+
   .menu__link {
     font-size: 3rem;
   }
@@ -229,11 +262,7 @@
     margin-top: 2rem;
     padding: 0.7rem 1.5rem;
     font-size: 1.45rem;
-}
-
-
-
-  
+} 
 }
 
 /* @media (max-width: 970px) {
@@ -294,6 +323,14 @@
   .contact__left-subtitle, .item__left-subtitle, .item__left-link {
     font-size: 2rem;
 }
+.contact__title-container-responsive{
+
+  display: block;
+}
+  .contact__title-container-responsive  .contact__title-text{
+    top: -4rem;
+    left: -20rem;
+}
 
   .index__social-container {
     display: flex;
@@ -318,6 +355,10 @@
 
   a.item__left-link.proyect-link.proyect-link-right {
     margin-top: 2rem;
+  }
+
+  .works__title-text{
+    left: 8rem;
   }
 
   .work__item {
@@ -388,6 +429,13 @@
     width: 2rem;
     height: 2rem;
   }
+
+   .contact__title-container-responsive  .contact__title-text{
+    left: 0rem;
+   }
+   .works__title-text{
+    left: 25%;
+   }
 
   .work__item {
     width: 89%;
@@ -472,12 +520,17 @@ span.item__left-link-text {
   }
 
   .text-right-title {
-    padding-top: 8rem;
+    padding-top:5rem;
+    width: 200%;
   }
 
   .index__text > div {
-    width: 100%;
+    width: 50%;
   }
+
+  .index-arrow{
+  display: none;
+}
 
   /* .proyect-link {
     padding-top: 33rem;
