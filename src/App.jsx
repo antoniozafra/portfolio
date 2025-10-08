@@ -1,11 +1,49 @@
-import { Children, useEffect, useState } from "react";
+import { Children, useEffect, useRef, useState } from "react";
 import { english } from "./translation/english";
 import { motion } from "motion/react";
 
 
+const dragConstraints = {
+  top:200,
+  bottom:200
+}
 
 function App() {
-  //IMAGES ROUTES
+
+  const technologiesItems = [
+   {
+    id: 'reactSVGLink',
+    path: './img/icons/react.svg',
+    className: 'react',
+  },
+  {
+    id: 'javascriptSVGLink',
+    path: './img/icons/javascript.svg',
+    className: 'javascript',
+  },
+  {
+    id: 'nodejsSVGLink',
+    path: './img/icons/nodejs.svg',
+    className: 'node',
+  },
+  { 
+    id: 'laravelSVGLink',
+    path: './img/icons/laravel.svg',
+    className: 'laravel',
+  },
+  {
+    id:'boostrapSVGLink',
+    path: './img/icons/bootstrap.svg',
+    className: 'bootstrap',
+  },
+  {
+    id: 'mysqlSVGLink',
+    path: './img/icons/mysql.svg',
+    className: 'mysql',
+  },
+  ];
+
+
 
   const arrowRightImageLink = "./img/icons/arrow_right.png";
   const crossCloseImageLink = "./img/icons/cross-close.png";
@@ -19,6 +57,8 @@ function App() {
   const exampleWorkImageLink = "./img/example-work1.png";
   // const meImageLink = './img/icons/me.png';
   const podadeolivosImageLink = "./img/podadeolivos-frameset.png";
+
+  
 
   /*Creamos un useState para controlar el valor del menu, 
   y le añadimos con un ternario la clase selected  */
@@ -35,9 +75,11 @@ function App() {
   const [openResponsiveMenu, setOpenResposiveMenu] = useState();
   const [closeResponsiveMenu, setCloseResposiveMenu] = useState();
 
-  useEffect(() => {
+  const limitTechnologiesRef = useRef <HTMLDivElement>(null);
+
+  useEffect ( () => {
     if (!isloading && languaje === "english") {
-      english();
+       english();
     }
   }, [isloading, languaje]);
 
@@ -161,14 +203,16 @@ function App() {
     return (
       <>
       
-        <motion.div animate={{opacity : 0.5}} className="loader ">
+        <div  className="loader ">
           <div className="loader__subtitle">
             <span className="loader__subtitle-text"></span>
           </div>
-        </motion.div>
+        </div>
       </>
     );
   }
+
+
 
   return (
     <>
@@ -389,6 +433,8 @@ function App() {
               </div>
             </div>
 
+            
+
             <div className="text__right">
               <p className="text-right-title">
                 Desarrollador web Full Stack, residente de Córdoba
@@ -397,7 +443,7 @@ function App() {
                 "Transformo ideas en software que conecta con las personas y
                 cumple sus objetivos."
               </span>
-              <a href="" className="item__left-link">
+              <a href="https://wa.me/34692840151?text=Buenas,%20me%20gustaría%20crear%20un%20proyecto" className="item__left-link">
                 <span className="item__left-link-text">¿Hablamos?</span>
                 <img className="right-arrow index-arrow" src={arrowRightImageLink} alt="" />
               </a>
@@ -447,7 +493,7 @@ function App() {
           </div>
 
           {/*WORK 2 */}
-          <div className="work__item" id="next-project2">
+          {/* <div className="work__item" id="next-project2">
             <div className="work__item-right">
               <img
                 className="item__right-image"
@@ -475,10 +521,10 @@ function App() {
                 <img className="right-arrow" src={arrowRightImageLink} alt="" />
               </a>
             </div>
-          </div>
+          </div> */}
 
           {/*WORK 3 */}
-          <div className="work__item">
+          {/* <div className="work__item">
             <div className="work__item-left">
               <p className="item__left-title">Titulo Del Proyecto</p>
               <p className="item__left-subtitle">
@@ -506,8 +552,38 @@ function App() {
                 src={exampleWorkImageLink}
               ></img>
             </div>
-          </div>
+          </div> */}
+
+
         </div>
+
+
+            {/*TECHNOLOGIES */}
+        <motion.div dragConstraints={limitTechnologiesRef}  className="index__tecnologies">
+
+            {/* BUCLE DE LOS DIFERENTES COMPONENTES */}
+    
+            {technologiesItems.map((itemList, index) => (
+          <motion.div
+          key={index}
+          drag
+          dragSnapToOrigin
+          dragConstraints={dragConstraints}
+          dragElastic={1}
+          className={`index__technologies-item ${itemList.className}`}
+          >
+          <motion.img
+            draggable={false}
+            className="index__technologies-item-image"
+            src={itemList.path}
+            alt={itemList.className}
+          />
+          </motion.div>
+          ))}
+
+             
+
+        </motion.div>
 
         {/*CONTACTO*/}
 

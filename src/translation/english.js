@@ -1,5 +1,5 @@
 
-export const english = () => {
+export const english =   () => {
   //BOTON DE DESCARGA DE CV
 
 
