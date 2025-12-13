@@ -1,0 +1,239 @@
+/*INDEX TECNOLOGIES*/
+.index__tecnologies{
+    
+    width: 100%;
+    height: 15rem;
+
+    position: relative;
+    justify-content: center;
+   text-align: center;
+
+   /* overflow: hidden; */
+    display: flex;
+    flex-direction: row;
+    
+    gap: 5rem;
+    margin-top: -5rem;
+
+    position: absolute;
+}
+
+.index__tecnologies::after{
+    width: 100vw;
+    content: "technologies";
+    position: absolute;
+    top: -5rem;
+
+    font-size: 15rem;
+    overflow: hidden;
+    text-align: center;
+    color: rgba(255, 192, 90, 0.1);
+    z-index: 1;
+    
+
+    font-family: "Pixelify Sans", sans-serif;
+
+
+}
+
+.index__technologies-item{
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    flex-basis: 10rem;
+    text-align: center;
+    border-radius: 1rem;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 2;
+}
+.index__technologies-item:hover{
+
+    transform: scale(1.2);
+    transition: all 300ms ease-in-out;
+}
+
+.index__technologies-item-image{
+    width: 4rem;
+}
+.react{
+    box-shadow: 0px 0px 3rem rgba(0, 216, 255, 0.6) ;
+
+    border-color: rgba(0, 216, 255, 0.6);
+    
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+    
+    
+}
+
+
+
+.node{
+    box-shadow: 0px 0px 3rem rgba(68, 136, 62, 1) ;
+
+    border-color: #44883e;
+
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.bootstrap{
+    box-shadow: 0px 0px 3rem rgba(125, 18, 252, 1) ;
+
+    border-color: rgba(125, 18, 252, 1);
+
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.javascript{
+    box-shadow: 0px 0px 3rem rgba(247, 223, 30, 1) ;
+
+    border-color: rgba(247, 223, 30, 1);
+
+
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+}
+.mysql{
+    box-shadow: 0px 0px 3rem rgba(68, 121, 161, 1) ;
+
+    border-color: rgba(0, 216, 255, 0.1);
+
+
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+}
+.php{
+
+    
+    box-shadow: 0px 0px 3rem rgba(126, 146, 191,  1) ;
+
+    border-color: rgba(0, 216, 255, 0.1);
+
+
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+}
+.laravel{
+    box-shadow: 0px 0px 3rem rgba(245, 48, 3, 1) ;
+
+    border-color: rgba(245, 48, 3, 1);
+
+
+    background-color: #222222;
+    color: #00d8ff;
+    text-transform: uppercase;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+
+
+/*MEDIA QUERIES*/
+
+@media(max-width:1050px){
+  .index__tecnologies{
+    gap: 2rem;
+  }
+}
+
+@media(max-width:850px){
+    .index__tecnologies{
+        gap: 1rem;
+        flex-basis: auto;
+    }
+
+}
+
+@media(max-width:768px){
+    .index__tecnologies::after{
+        font-size: 10rem;
+        top: -2rem;
+    }
+
+    .index__tecnologies{
+        gap: 1.5rem;
+    }
+
+    .index__technologies-item{
+        flex-basis: 5rem;
+    }
+    .index__technologies-item-image{
+        width: 3rem;
+    }
+
+}
+
+@media(max-width:425px){
+    .index__tecnologies::after{
+        font-size: 6rem;
+        top: -0rem;
+    }
+
+    .index__tecnologies{
+        gap: 1rem;
+    }
+
+    .index__technologies-item{
+        flex-basis: 4rem;
+    }
+    .index__technologies-item-image{
+        width: 3rem;
+    }
+
+}
+
+@media(max-width:375px){
+
+    .index__tecnologies::after{
+        font-size: 5rem;
+        top: 1.5ºrem;
+    }
+
+    .index__tecnologies{
+        /* gap: 2rem; */
+    }
+
+    .index__technologies-item{
+        flex-basis: 1rem;
+    }
+    .index__technologies-item-image{
+        /* width: 2.5rem; */
+    }
+
+}
+
+
+@media(max-width:320px){
+    .index__tecnologies::after{
+        font-size: 5rem;
+        top: 0rem;
+    }
+
+    .index__tecnologies{
+        gap: .5rem;
+    }
+
+    .index__technologies-item{
+        flex-basis: 3.5rem;
+    }
+    .index__technologies-item-image{
+        width: 2.5rem;
+    }
+}

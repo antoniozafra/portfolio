@@ -1,47 +1,18 @@
-import { Children, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { english } from "./translation/english";
+import Technologies from "./components/technologies/Technologies";
+import Footer from "./components/footer/Footer";
+import { MailSendMessage } from "./components/contact/MailSendMessage";
+import Loader from "./components/loader/Loader";
+import { MessageForm } from "./components/form/MessageForm/MessageForm";
 import { motion } from "motion/react";
 
 
-const dragConstraints = {
-  top:200,
-  bottom:200
-}
 
 function App() {
 
-  const technologiesItems = [
-   {
-    id: 'reactSVGLink',
-    path: './img/icons/react.svg',
-    className: 'react',
-  },
-  {
-    id: 'javascriptSVGLink',
-    path: './img/icons/javascript.svg',
-    className: 'javascript',
-  },
-  {
-    id: 'nodejsSVGLink',
-    path: './img/icons/nodejs.svg',
-    className: 'node',
-  },
-  { 
-    id: 'laravelSVGLink',
-    path: './img/icons/laravel.svg',
-    className: 'laravel',
-  },
-  {
-    id:'boostrapSVGLink',
-    path: './img/icons/bootstrap.svg',
-    className: 'bootstrap',
-  },
-  {
-    id: 'mysqlSVGLink',
-    path: './img/icons/mysql.svg',
-    className: 'mysql',
-  },
-  ];
+  const api = import.meta.env.VITE_APP_API_BACKEND;
+
 
 
 
@@ -57,10 +28,16 @@ function App() {
   const exampleWorkImageLink = "./img/example-work1.png";
   // const meImageLink = './img/icons/me.png';
   const podadeolivosImageLink = "./img/podadeolivos-frameset.png";
+  const aleatoryPoints = "./img/background/aleatory-points.png";
+  const panelDots = "./img/background/panel-dots.png";
+  const coffeeImageLink = "./img/icons/coffee.svg"
+  const downloadImageLink = "./img/icons/download.svg"
 
-  
+    const [message, setMessage] = useState(null);
 
-  /*Creamos un useState para controlar el valor del menu, 
+
+
+  /*Creamos un useState para controlar el valor del menu,
   y le añadimos con un ternario la clase selected  */
   const [selected, setSelected] = useState();
   const [selectedResponsive, setselectedResponsive] = useState();
@@ -74,14 +51,42 @@ function App() {
   /*UseState para el menu resposive */
   const [openResponsiveMenu, setOpenResposiveMenu] = useState();
   const [closeResponsiveMenu, setCloseResposiveMenu] = useState();
+  // const limitTechnologiesRef = useRef < HTMLDivElement > null;
 
-  const limitTechnologiesRef = useRef <HTMLDivElement>(null);
 
-  useEffect ( () => {
+    const [showGotop, setShowGotop] = useState(false);
+
+
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setShowGotop(true);
+        console.log('2')
+      } else {
+        setShowGotop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Limpieza del listener (importante en React)
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
+
+
+  useEffect(() => {
     if (!isloading && languaje === "english") {
-       english();
+      english();
     }
   }, [isloading, languaje]);
+
+
 
   /*UseEfecct que se iniciar conforme ejecutamos la app,
      para establecer el boton de inicio seleccionado */
@@ -94,11 +99,16 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
 
     //Limpimos el loader
     return () => clearTimeout(timer);
-  }, [isloading]);
+
+
+}, [isloading]);
+
+
+
 
   const handleClickMenu = (name) => {
     setSelected(name);
@@ -113,12 +123,21 @@ function App() {
     setIsLoading(true); // Activamos loader
     setLanguaje(lang); // Cambiamos idioma
     handleCloseMenuResponsive(); //Desactivamos el blur del index
-    if (lang === "english") english();
+    if (lang === "english"){
+
+   document.documentElement.style.setProperty('--text-loader', '"Loading..."');
+   document.documentElement.style.setProperty('--text-subtitle-loader', '"Made with  ❤️"');
+
+      english();
+    }
 
     setTimeout(() => {
       setIsLoading(false); // Desactivamos loader
-    }, 4000);
+    }, 2000);
   };
+
+
+
 
   const handleCloseMenuResponsive = () => {
     setCloseResposiveMenu(true);
@@ -146,7 +165,6 @@ function App() {
   };
 
   const handleClickItem = () => {
-    console.log("cerrammos el menu");
 
     const menuResponsive = document.getElementById("box__menu-responsive");
     menuResponsive.classList.remove("open-responsive");
@@ -156,24 +174,16 @@ function App() {
   const handdleSubmitForm = async (e) => {
     e.preventDefault();
 
-    console.log('enviado')
-    
-     
-
-    // const name = document.getElementById("name").value;
-    // const email = document.getElementById("email").value;
-    // const description = document.getElementById("description").value;
-
     const data = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
       description: document.getElementById("description").value,
     };
 
-    console.log(JSON.stringify(data));
 
     try {
-      const res = await fetch("http://localhost:5000/api/sendmail", {
+
+      const res = await fetch(`${api}/api/sendmail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -182,37 +192,33 @@ function App() {
       });
 
       const result = await res.json();
-      console.log("Respuesta del backend:", result);
+      console.log("Respuesta del backend:", result, res.status);
 
-      /*FILTAR RESPUESTA,  Y MOSTRAR MENSAJE */
-
-      return (
-        <>
-        <p>Correo enviado correctamente</p>
-        </>
-      )
-
-      
+      // COMPROBAMOS SI LA RESPUESTA ES CORRECTA Y DEVOLVEMOS EL MENSAJE CORRECTO
+       if (res.status === 200) {
+        setMessage({
+          title: "Mensaje Enviado",
+          subtitle: "Gracias por tu mensaje, te responderé brevemente",
+        });
+      } else {
+        setMessage({
+          title: "Error",
+          subtitle: "No se ha podido enviar el mensaje, inténtelo de nuevo",
+        });
+      }
     } catch (err) {
-      return console.error("Error:", err);
+      setMessage({
+        title: "Error",
+        subtitle: "No se ha podido enviar el mensaje, inténtelo de nuevo",
+      });
     }
   };
 
+
   //Creamos un condicional para comprobar y mostrar el loader al ejecutar el componente
   if (isloading) {
-    return (
-      <>
-      
-        <div  className="loader ">
-          <div className="loader__subtitle">
-            <span className="loader__subtitle-text"></span>
-          </div>
-        </div>
-      </>
-    );
+    return <Loader />;
   }
-
-
 
   return (
     <>
@@ -220,17 +226,10 @@ function App() {
 
       {/* {openResponsiveMenu && ( */}
       <div id="box__menu-responsive" className={` box__menu-responsive `}>
-        {/* <a href="" className="menu__box-responsive-image-link">
-               <img
-                className="menu__box-responsive-image-link"
-                src="./src/assets/img/icons/menu-responsive-open.png"
-                alt=""
-              />  */}
-
         <div className="menu__box-responsive-items">
           <a
             href="#index"
-            className={`menu__link menu__link-responsive 
+            className={`menu__link menu__link-responsive
                      ${selected === "inicio" ? "selected" : ""}
                      ${
                        selectedResponsive === "inicio"
@@ -247,7 +246,7 @@ function App() {
           </a>
           <a
             href="#proyectos"
-            className={`menu__link menu__link-responsive 
+            className={`menu__link menu__link-responsive
                      ${selected === "proyectos" ? "selected" : ""}
                      ${
                        selectedResponsive === "proyectos"
@@ -264,7 +263,7 @@ function App() {
           </a>
           <a
             href="#contacto"
-            className={`menu__link menu__link-responsive 
+            className={`menu__link menu__link-responsive
                      ${selected === "contacto" ? "selected" : ""}
                      ${
                        selectedResponsive === "contacto"
@@ -283,7 +282,7 @@ function App() {
 
         <div className="footer__social-container footer-social-container-responsive">
           <div className="social-container__item">
-            <a href="" className="item__link">
+            <a href="https://github.com/antoniozafra" target="_blank" className="item__link">
               <img
                 className="link__image"
                 src={githubImageLink}
@@ -293,12 +292,12 @@ function App() {
           </div>
 
           <div className="social-container__item">
-            <a href="" className="item__link">
+            <a href="https://www.linkedin.com/in/antonio-jesus-zafra-arias-5a9263156/" target="_blank" className="item__link">
               <img className="link__image" src={linkedinImageLink} alt="" />
             </a>
           </div>
           <div className="social-container__item">
-            <a href="" className="item__link">
+            <a href="https://wa.me/34692840151?text=Buenas,%20me%20gustaría%20crear%20un%20proyecto" target="_blank" className="item__link">
               <img className="link__image" src={whatshappImageLink} alt="" />
             </a>
           </div>
@@ -313,21 +312,22 @@ function App() {
           />
         </div>
       </div>
-      {/* )} */}
 
       <div id="layer-blur" className={`${openResponsiveMenu ? "blur" : " "} `}>
+
+
+        <a href="#index" className={`layer__gotop-container ${ showGotop ? "showGotop" : ""}`}>
+
+            <img className="gotop-container__img" src="./public/img/icons/down-arrow.png" alt="" />
+
+        </a>
+
+
+
         <div className="index fade-in" id="index">
           {/* NAVBAR*/}
           <nav className="menu__box">
             <div className="menu__box-left">
-              <a
-                href="/portfolio/cv_antoniozafra.pdf"
-                download="cv_antoniozafra.pdf"
-                className="menu__box-left-text"
-              >
-                Descargar CV
-              </a>
-
               <div className="menu__box-left-languaje-box">
                 <img
                   className={`languaje-box-img ${
@@ -355,39 +355,7 @@ function App() {
                 />
               </div>
             </div>
-            <div className="menu__box-right">
-              <a
-                href="#index"
-                //  className="menu__link"
-                className={`menu__link  ${
-                  selected === "inicio" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  handleClickMenu("inicio");
-                }}
-              >
-                Inicio
-              </a>
-              <a
-                href="#proyectos"
-                //  className="menu__link "
-                className={`menu__link ${
-                  selected === "proyectos" ? "selected" : ""
-                }`}
-                onClick={() => handleClickMenu("proyectos")}
-              >
-                Proyectos
-              </a>
-              <a
-                href="#contacto"
-                className={`menu__link ${
-                  selected === "contacto" ? "selected" : ""
-                }`}
-                onClick={() => handleClickMenu("contacto")}
-              >
-                Contacto
-              </a>
-            </div>
+
 
             {/* MENU HAMBURGESA PARA RESPOSIVE */}
             <div className="menu__box-resposive">
@@ -403,71 +371,85 @@ function App() {
           </nav>
 
           <div className="index__text">
-            <div className="text__left">
-              <p className="text__left-title">Antonio Zafra .</p>
 
-              <div className="index__social-container">
-                <div className="index-container__item">
-                  <a href="" className="item__link">
-                    <img className="link__image" src={githubImageLink} alt="" />
-                  </a>
-                </div>
-                <div className="index-container__item">
-                  <a href="" className="item__link">
-                    <img
-                      className="link__image"
-                      src={linkedinImageLink}
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div className="index-container__item">
-                  <a href="" className="item__link">
-                    <img
-                      className="link__image"
-                      src={whatshappImageLink}
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            
 
             <div className="text__right">
+              <p className="text__right-header">{'- Sobre Mi </>'}</p>
               <p className="text-right-title">
-                Desarrollador web Full Stack, residente de Córdoba
+                Desarrollador web <span className="accent-text">F</span>ull <span className="accent-text">S</span>tack, residente de Córdoba
               </p>
               <span className="text-right-subtitle">
                 "Transformo ideas en software que conecta con las personas y
                 cumple sus objetivos."
               </span>
-              <a href="https://wa.me/34692840151?text=Buenas,%20me%20gustaría%20crear%20un%20proyecto" className="item__left-link">
-                <span className="item__left-link-text">¿Hablamos?</span>
-                <img className="right-arrow index-arrow" src={arrowRightImageLink} alt="" />
-              </a>
+
+              <div className="text-right__download-cv-container">
+
+                <div className="download-cv-container__download-button">
+                  <a
+                    href="/portfolio/cv_antoniozafra.pdf"
+                    download="cv_antoniozafra.pdf"
+                    className="text-right-download-cv-container-text"
+                  >
+                    Descargar CV
+
+                    <img className="download-button-img" src={downloadImageLink} alt="" />
+                  </a>
+
+                </div>
+
+                <div className="download-cv-container__buycoffe-button">
+                    <a className="buycoffe-button-text">Buy me a Coffe!
+                      </a>
+                      <img className="buycoffe-img" src={coffeeImageLink} alt="" />
+                </div>
+
+              </div>
+
             </div>
           </div>
+
+          <div className="index__background-2">
+                <img className="index__background-2-img" src={panelDots}  alt="" />
+          </div>
+
+          <div className="index__background-3">
+                <img className="index__background-3-img" src={panelDots}  alt="" />
+          </div>
+
         </div>
 
         {/*TRABAJOS */}
 
         <div className="works" id="proyectos">
 
-        <div className="works__title-container">
 
+
+          <div className="works__container">
+
+            <div className="works__title-container">
             <span className="works__title-text">{`- Proyectos </>`}</span>
+          </div>
+          {/*TYPE OF WORK SELECTOR */}
+          <div  className="works__type-container">
 
-        </div>
+                <ul className="type-container__list">
+                  {/* <li className="list__item">Frontend</li> */}
+                  <li className="list__item-text">Full Stack</li>
+                  <li className="list__item-text">Frontend </li>
+                  <li className="list__item-text">UX/UI</li>
+                </ul>
+
+          </div>
 
 
           {/*WORK 1 */}
           <div className="work__item">
+
             <div className="work__item-left">
               <p className="item__left-title">Podadeolivos.com</p>
               <p className="item__left-subtitle">
-                Sitio web completo para empresa dedicada a la poda de olvios
+                Sitio web completo para empresa dedicada a la poda de olivos
               </p>
 
               <div className="technologies">
@@ -479,10 +461,123 @@ function App() {
                 <div className="technologies__item">PHP</div>
               </div>
 
-              <a href="https://www.podadeolivos.com" target="_blank" className="item__left-link ">
+              {/* <a
+                href="https://www.podadeolivos.com"
+                target="_blank"
+                className="item__left-link "
+              >
                 <span className="proyect-link">Visitar Web</span>
-                <img className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a>
+                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
+              </a> */}
+            </div>
+            <div className="work__item-right">
+              <img
+                className="item__right-image"
+                src={podadeolivosImageLink}
+              ></img>
+            </div>
+          </div>
+          {/*WORK 1 */}
+          <div className="work__item"
+            >
+
+            <div className="work__item-left">
+              <p className="item__left-title">Podadeolivos.com</p>
+              <p className="item__left-subtitle">
+                Sitio web completo para empresa dedicada a la poda de olivos
+              </p>
+
+              <div className="technologies">
+                <div className="technologies__item">HTML</div>
+                <div className="technologies__item">CSS</div>
+                <div className="technologies__item">JS</div>
+                <div className="technologies__item">WORDPRESS</div>
+                <div className="technologies__item">ELEMENTOR</div>
+                <div className="technologies__item">PHP</div>
+              </div>
+
+              <div className="work__item-link-container">
+                <a className="work__item-link-text" href="">Ver Online</a>
+              </div>
+
+              {/* <a
+                href="https://www.podadeolivos.com"
+                target="_blank"
+                className="item__left-link "
+              >
+                <span className="proyect-link">Visitar Web</span>
+                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
+              </a> */}
+            </div>
+            <div className="work__item-right">
+              <img
+                className="item__right-image"
+                src={podadeolivosImageLink}
+              ></img>
+            </div>
+          </div>
+          {/*WORK 1 */}
+          <div className="work__item"
+            >
+
+            <div className="work__item-left">
+              <p className="item__left-title">Podadeolivos.com</p>
+              <p className="item__left-subtitle">
+                Sitio web completo para empresa dedicada a la poda de olivos
+              </p>
+
+              <div className="technologies">
+                <div className="technologies__item">HTML</div>
+                <div className="technologies__item">CSS</div>
+                <div className="technologies__item">JS</div>
+                <div className="technologies__item">WORDPRESS</div>
+                <div className="technologies__item">ELEMENTOR</div>
+                <div className="technologies__item">PHP</div>
+              </div>
+
+              {/* <a
+                href="https://www.podadeolivos.com"
+                target="_blank"
+                className="item__left-link "
+              >
+                <span className="proyect-link">Visitar Web</span>
+                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
+              </a> */}
+            </div>
+            <div className="work__item-right">
+              <img
+                className="item__right-image"
+                src={podadeolivosImageLink}
+              ></img>
+            </div>
+          </div>
+          {/*WORK 1 */}
+          <div className="work__item"
+            >
+
+            <div className="work__item-left">
+              <p className="item__left-title">Podadeolivos.com</p>
+              <p className="item__left-subtitle">
+                Sitio web completo para empresa dedicada a la poda de olivos
+              </p>
+
+              <div className="technologies">
+                <div className="technologies__item">HTML</div>
+                <div className="technologies__item">CSS</div>
+                <div className="technologies__item">JS</div>
+                <div className="technologies__item">WORDPRESS</div>
+                <div className="technologies__item">ELEMENTOR</div>
+                <div className="technologies__item">PHP</div>
+              </div>
+
+              {/* <a
+                href="https://www.podadeolivos.com"
+                target="_blank"
+                className="item__left-link "
+              >
+                <span className="proyect-link">Visitar Web</span>
+                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
+              </a> */}
             </div>
             <div className="work__item-right">
               <img
@@ -492,217 +587,102 @@ function App() {
             </div>
           </div>
 
-          {/*WORK 2 */}
-          {/* <div className="work__item" id="next-project2">
-            <div className="work__item-right">
-              <img
-                className="item__right-image"
-                src={exampleWorkImageLink}
-              ></img>
-            </div>
-            <div className="work__item-left">
-              <p className="item__left-title">Titulo Del Proyecto</p>
-              <p className="item__left-subtitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Inventore quasi enim ullam ab
-              </p>
-
-              <div className="technologies">
-                <div className="technologies__item">HTML</div>
-                <div className="technologies__item">CSS</div>
-                <div className="technologies__item">JAVASCRIPT</div>
-                <div className="technologies__item">MYSQL</div>
-                <div className="technologies__item">JAVA</div>
-                <div className="technologies__item">REACT</div>
-              </div>
-
-              <a href="" className="item__left-link ">
-                <span className="proyect-link">Visitar Web</span>
-                <img className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a>
-            </div>
-          </div> */}
-
-          {/*WORK 3 */}
-          {/* <div className="work__item">
-            <div className="work__item-left">
-              <p className="item__left-title">Titulo Del Proyecto</p>
-              <p className="item__left-subtitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Inventore quasi enim ullam ab
-              </p>
-
-              <div className="technologies">
-                <div className="technologies__item">HTML</div>
-                <div className="technologies__item">CSS</div>
-                <div className="technologies__item">JAVASCRIPT</div>
-                <div className="technologies__item">JAVA</div>
-                <div className="technologies__item">REACT</div>
-                <div className="technologies__item">WORDPRESS</div>
-              </div>
-
-              <a href="" className="item__left-link ">
-                <span className="proyect-link">Visitar Web</span>
-                <img className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a>
-            </div>
-            <div className="work__item-right">
-              <img
-                className="item__right-image"
-                src={exampleWorkImageLink}
-              ></img>
-            </div>
-          </div> */}
+          </div>
 
 
         </div>
 
 
-            {/*TECHNOLOGIES */}
-        <motion.div dragConstraints={limitTechnologiesRef}  className="index__tecnologies">
-
-            {/* BUCLE DE LOS DIFERENTES COMPONENTES */}
-    
-            {technologiesItems.map((itemList, index) => (
-          <motion.div
-          key={index}
-          drag
-          dragSnapToOrigin
-          dragConstraints={dragConstraints}
-          dragElastic={1}
-          className={`index__technologies-item ${itemList.className}`}
-          >
-          <motion.img
-            draggable={false}
-            className="index__technologies-item-image"
-            src={itemList.path}
-            alt={itemList.className}
-          />
-          </motion.div>
-          ))}
-
-             
-
-        </motion.div>
+        {/*TECHNOLOGIES */}
+        <Technologies />
 
         {/*CONTACTO*/}
+        <div className="contact">
 
-        <section className="contact" id="contacto">
-
-       
-        <div className="contact__title-container-responsive">
-
-            <span className="contact__title-text">{`- ¿Hablamos? </>`}</span>
-
-        </div>
-        
-
-          <div className="contact__left">
-            
-        <div className="contact__title-container">
-
-            <span className="contact__title-text">{`- ¿Hablamos? </>`}</span>
-
-        </div>
-
-            <p className="contact__left-title">¿Creamos un proyecto? </p>
-
-            <span className="contact__left-subtitle">
-              ¿Hablamos?Contacta conmigo y te resuelvo cualquier duda sin
-              problema
-            </span>
-
-            <a href="" className="contact__left-link">
-              antoniozafra@gmail.com
-              <img className="right-arrow" src={arrowRightImageLink} alt="" />
-            </a>
+          <div className="contact__title-container">
+            <span className="contact__title-text text-web">{`- ¿Hablamos? </>`}</span>
           </div>
 
-          <div className="contact__right">
-            <span className="contact__right-title">Contacta Conmigo</span>
+          <div className="contact__container" id="contacto">
+            {/* <div className="contact__title-container-responsive">
+              <span className="contact__title-text">{`- ¿Hablamos? </>`}</span>
+              </div> */}
 
-            <div className="contact__right-form-box ">
+            <div className="contact__left">
 
-                {/* <div className="contact__message hide">
-                  <span className="contact__message-title">Mensaje Enviado</span>
-                  <span className="contact__message-subtitle">Gracias, me pondre en contacto contigo</span>
+              <p className="contact__left-title">¿Creamos un proyecto? </p>
 
-                  <a className="contact__message-close">
-                    
-                  <img className="contact__message-cross" src={crossCloseImageLink} alt="" />
-                  </a>
-                </div> */}
+              <span className="contact__left-subtitle">
+                ¿Hablamos?Contacta conmigo y te resuelvo cualquier duda sin
+                problema
+              </span>
 
-              <form
-                className="contact__right-form-box"
-                onSubmit={handdleSubmitForm}
-              >
-                <input
-                  className="form__input form__input-name"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Nombre completo"
-                />
-                <input
-                  className="form__input form__input-email"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Correo Electronico"
-                />
-                <textarea
-                  className="form__textarea form__textarea-describe"
-                  wrap="soft"
-                  name="description"
-                  id="description"
-                  placeholder="Explica un poco más tu idea"
-                ></textarea>
+              <a href="" className="contact__left-link">
+                antoniozafra@gmail.com
+                <img className="right-arrow" src={arrowRightImageLink} alt="" />
+              </a>
+            </div>
 
-                <button className="form__button " type="submit">
-                  <a href="" >
-                    <span className="form__button-text">Enviar Correo</span>
-                    <img
-                      className="right-arrow"
-                      src={arrowRightImageLink}
-                      alt=""
-                    />
-                  </a>
-                </button>
-              </form>
+            <div className="contact__right">
+              <span className="contact__right-title">Contacta Conmigo</span>
+
+              <div className="contact__right-form-box ">
+
+                {message && (
+                    <MessageForm title={message.title} subtitle={message.subtitle} />
+                  )}
+
+
+
+                <form
+                  className="contact__right-form-box"
+                  onSubmit={handdleSubmitForm}
+                >
+                  <input
+                    className="form__input form__input-name"
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Nombre completo"
+                    required
+                  />
+                  <input
+                    className="form__input form__input-email"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Correo Electronico"
+                    required
+                  />
+                  <textarea
+                    className="form__textarea form__textarea-describe"
+                    wrap="soft"
+                    name="description"
+                    id="description"
+                    placeholder="Explica un poco más tu idea"
+                    required
+                    minLength={2}
+                  ></textarea>
+
+                  <button className="form__button " type="submit">
+                    <a href="">
+                      <span className="form__button-text">Enviar Correo</span>
+                      <img
+                        className="right-arrow"
+                        src={arrowRightImageLink}
+                        alt=""
+                      />
+                    </a>
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </section>
+
+        </div>
 
         {/*FOOTER */}
-
-        <footer className="footer">
-          <p className="footer__text">
-            if (teGusta) {"{"} contáctame(); {"}"}
-          </p>
-
-          <div className="footer__social-container">
-            <div className="social-container__item">
-              <a href="" className="item__link">
-                <img className="link__image" src={githubImageLink} alt="" />
-              </a>
-            </div>
-
-            <div className="social-container__item">
-              <a href="" className="item__link">
-                <img className="link__image" src={linkedinImageLink} alt="" />
-              </a>
-            </div>
-            <div className="social-container__item">
-              <a href="" className="item__link">
-                <img className="link__image" src={whatshappImageLink} alt="" />
-              </a>
-            </div>
-          </div>
-          {/* <div className="footer__subtitle">
-            <h4 className="footer__subtitle-text">Creado con ❤️</h4>
-          </div> */}
-        </footer>
+        <Footer />
       </div>
     </>
   );

@@ -3,7 +3,7 @@ export const english =   () => {
   //BOTON DE DESCARGA DE CV
 
 
-  document.querySelector(".menu__box-left-text").innerHTML = "Download CV";
+    document.querySelector(".text-right-download-cv-container-text").textContent = "Download CV";
 
 
   //MENU DE INICIO
@@ -21,9 +21,17 @@ export const english =   () => {
 
   //BOTON DE CONTACTO
   const itemLeftLink__ENGLISH = document.querySelector(".item__left-link-text");
-  itemLeftLink__ENGLISH.innerHTML = "Contact ";
+  // itemLeftLink__ENGLISH.innerHTML = "Contact ";
+
+
+  /*TEXTO DE PROYECTOS Y HABLAMOS */
+
+  document.querySelector(".works__title-text").innerHTML = "- Projects</>"
+  document.querySelector(".text-web").innerHTML = "- We speak?</>"
 
   //PROYECTO 1
+  document.querySelector(".item__left-subtitle").innerHTML = "Complete website for a company dedicated to olive tree pruning "
+  document.querySelector(".proyect-link").innerHTML = "Show Website";
   //PROYECTO 2
   //PROYECTO 3
 
@@ -41,20 +49,23 @@ export const english =   () => {
   document.querySelector(".form__textarea-describe").placeholder =
     "Explain your idea a little more";
 
+    document.querySelector(".form__button-text").innerHTML = "Send Mail";
+
   //FOOTER
   document.querySelector(".footer__text").innerHTML =
     "if (doYouLike) { contactMe(); }";
-  // document.querySelector(".footer__subtitle-text").innerHTML =
-  //   "Made in With ❤️";
 
   //MENU RESPONSIVE
   const menu__links__responsive__ENGLISH = document.querySelectorAll(
     ".menu__link-responsive "
   );
 
+  //LOADER
+  // document.documentElement.style.setProperty('--text-loader', 'Loading...');
+
 
  
-    menu__links__responsive__ENGLISH[0].innerHTML = "Home";
+      menu__links__responsive__ENGLISH[0].innerHTML = "Home";
       menu__links__responsive__ENGLISH[1].innerHTML = "Projects";
       menu__links__responsive__ENGLISH[2].innerHTML = "Contact";
 
