@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import './styles.css'
 
 
-const Technologies = () => {
+export const Technologies = () => {
 
      const technologiesItems = [
    {
@@ -90,4 +90,3 @@ const dragConstraints = {
   )
 }
 
-export default Technologies

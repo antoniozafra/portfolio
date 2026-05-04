@@ -1,5 +1,4 @@
 import React from 'react'
-
  export const MessageForm = ({title, subtitle}) => {
 
         const crossCloseImageLink = "./img/icons/cross-close.png";

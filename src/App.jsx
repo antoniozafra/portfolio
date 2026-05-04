@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { english } from "./translation/english";
-import Technologies from "./components/technologies/Technologies";
-import Footer from "./components/footer/Footer";
-import { MailSendMessage } from "./components/contact/MailSendMessage";
-import Loader from "./components/loader/Loader";
-import { MessageForm } from "./components/form/MessageForm/MessageForm";
-import { motion } from "motion/react";
+import {useEffect,useRef,useState } from "react";
+import {english } from "./translation/english";
+import {Technologies} from "./components/technologies/Technologies";
+import {Footer} from "./components/footer/Footer";
+import {MailSendMessage} from "./components/contact/MailSendMessage";
+import {Loader} from "./components/loader/Loader";
+import {MessageForm} from "./components/form/MessageForm/MessageForm";
+import {motion} from "motion/react";
+import { ProjectsGrid } from "./components/projects/ProjectsGrid";
 
 
 
@@ -13,10 +14,7 @@ function App() {
 
   const api = import.meta.env.VITE_APP_API_BACKEND;
 
-
-
-
-  const arrowRightImageLink = "./img/icons/arrow_right.png";
+   const arrowRightImageLink = "./img/icons/arrow_right.png";
   const crossCloseImageLink = "./img/icons/cross-close.png";
   const downArrowImageLink = "./img/icons/down-arrow.png";
   const flagSpainImageLink = "./img/icons/flag-spain.png";
@@ -32,6 +30,8 @@ function App() {
   const panelDots = "./img/background/panel-dots.png";
   const coffeeImageLink = "./img/icons/coffee.svg"
   const downloadImageLink = "./img/icons/download.svg"
+
+  const cursorImg = "./img/icons/cursor.svg"
 
     const [message, setMessage] = useState(null);
 
@@ -54,7 +54,7 @@ function App() {
   // const limitTechnologiesRef = useRef < HTMLDivElement > null;
 
 
-    const [showGotop, setShowGotop] = useState(false);
+  const [showGotop, setShowGotop] = useState(false);
 
 
 
@@ -63,7 +63,6 @@ function App() {
     const handleScroll = () => {
       if (window.scrollY >= 1000) {
         setShowGotop(true);
-        console.log('2')
       } else {
         setShowGotop(false);
       }
@@ -76,8 +75,6 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-
 
 
   useEffect(() => {
@@ -96,16 +93,17 @@ function App() {
     setOpenResposiveMenu(false);
   }, []);
 
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 1500);
 
     //Limpimos el loader
     return () => clearTimeout(timer);
 
-
-}, [isloading]);
+}, []);
 
 
 
@@ -216,12 +214,16 @@ function App() {
 
 
   //Creamos un condicional para comprobar y mostrar el loader al ejecutar el componente
-  if (isloading) {
-    return <Loader />;
-  }
+  
+  
 
+    if (isloading ) {
+      return <Loader />;
+    }
+  
   return (
     <>
+
       {/* INDEX DE LA APLICACION*/}
 
       {/* {openResponsiveMenu && ( */}
@@ -242,7 +244,7 @@ function App() {
               handleClickItem();
             }}
           >
-            Inicio
+            Sobre Mí
           </a>
           <a
             href="#proyectos"
@@ -276,10 +278,8 @@ function App() {
               handleClickItem();
             }}
           >
-            Contacto
+            ¿Hablamos?
           </a>
-        </div>
-
         <div className="footer__social-container footer-social-container-responsive">
           <div className="social-container__item">
             <a href="https://github.com/antoniozafra" target="_blank" className="item__link">
@@ -302,6 +302,8 @@ function App() {
             </a>
           </div>
         </div>
+        </div>
+
 
         <div className="box__menu-close">
           <img
@@ -318,13 +320,14 @@ function App() {
 
         <a href="#index" className={`layer__gotop-container ${ showGotop ? "showGotop" : ""}`}>
 
-            <img className="gotop-container__img" src="./public/img/icons/down-arrow.png" alt="" />
+            <img className="gotop-container__img" src={downArrowImageLink} alt="" />
 
         </a>
 
 
 
         <div className="index fade-in" id="index">
+
           {/* NAVBAR*/}
           <nav className="menu__box">
             <div className="menu__box-left">
@@ -376,12 +379,39 @@ function App() {
             <div className="text__right">
               <p className="text__right-header">{'- Sobre Mi </>'}</p>
               <p className="text-right-title">
-                Desarrollador web <span className="accent-text">F</span>ull <span className="accent-text">S</span>tack, residente de Córdoba
-              </p>
+                Desarrollador web <span className="accent-text">F</span>ull <span className="accent-text">S</span>tack</p>
               <span className="text-right-subtitle">
+                Residente en Córdoba, formación en DAW, experiencia en desarrollo Full Stack ,enfocado en crear aplicaciones funcionales, bien estructuradas y con un diseño totalmente adaptado.
+              </span>
+              <span className="text-right-subtitle-quote">
                 "Transformo ideas en software que conecta con las personas y
                 cumple sus objetivos."
               </span>
+
+                <div className="text__right-principal-technologies">
+                  <p className="principal-technologies__title">Tecnologías Principales</p>
+
+                  <div className="principal-technologies__container">
+                      <div className="technologies__container-item">
+                          <span className="container-item__text">React</span>
+                      </div>
+                      <div className="technologies__container-item">
+                          <span className="container-item__text">Javascript</span>
+                      </div>
+                      <div className="technologies__container-item">
+                          <span className="container-item__text">Node</span>
+                      </div>
+                      <div className="technologies__container-item">
+                          <span className="container-item__text">Laravel</span>
+                      </div>
+                      <div className="technologies__container-item">
+                          <span className="container-item__text">PHP</span>
+                      </div>
+                      <div className="technologies__container-item">
+                          <span className="container-item__text">Mysql</span>
+                      </div>
+                  </div>
+                </div>
 
               <div className="text-right__download-cv-container">
 
@@ -425,169 +455,16 @@ function App() {
 
 
 
-          <div className="works__container">
 
-            <div className="works__title-container">
+          <div className="works__title-container">
             <span className="works__title-text">{`- Proyectos </>`}</span>
           </div>
-          {/*TYPE OF WORK SELECTOR */}
-          <div  className="works__type-container">
-
-                <ul className="type-container__list">
-                  {/* <li className="list__item">Frontend</li> */}
-                  <li className="list__item-text">Full Stack</li>
-                  <li className="list__item-text">Frontend </li>
-                  <li className="list__item-text">UX/UI</li>
-                </ul>
-
-          </div>
 
 
-          {/*WORK 1 */}
-          <div className="work__item">
+          {/*PROJECT COMPONENT */}
 
-            <div className="work__item-left">
-              <p className="item__left-title">Podadeolivos.com</p>
-              <p className="item__left-subtitle">
-                Sitio web completo para empresa dedicada a la poda de olivos
-              </p>
+          <ProjectsGrid/>
 
-              <div className="technologies">
-                <div className="technologies__item">HTML</div>
-                <div className="technologies__item">CSS</div>
-                <div className="technologies__item">JS</div>
-                <div className="technologies__item">WORDPRESS</div>
-                <div className="technologies__item">ELEMENTOR</div>
-                <div className="technologies__item">PHP</div>
-              </div>
-
-              {/* <a
-                href="https://www.podadeolivos.com"
-                target="_blank"
-                className="item__left-link "
-              >
-                <span className="proyect-link">Visitar Web</span>
-                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a> */}
-            </div>
-            <div className="work__item-right">
-              <img
-                className="item__right-image"
-                src={podadeolivosImageLink}
-              ></img>
-            </div>
-          </div>
-          {/*WORK 1 */}
-          <div className="work__item"
-            >
-
-            <div className="work__item-left">
-              <p className="item__left-title">Podadeolivos.com</p>
-              <p className="item__left-subtitle">
-                Sitio web completo para empresa dedicada a la poda de olivos
-              </p>
-
-              <div className="technologies">
-                <div className="technologies__item">HTML</div>
-                <div className="technologies__item">CSS</div>
-                <div className="technologies__item">JS</div>
-                <div className="technologies__item">WORDPRESS</div>
-                <div className="technologies__item">ELEMENTOR</div>
-                <div className="technologies__item">PHP</div>
-              </div>
-
-              <div className="work__item-link-container">
-                <a className="work__item-link-text" href="">Ver Online</a>
-              </div>
-
-              {/* <a
-                href="https://www.podadeolivos.com"
-                target="_blank"
-                className="item__left-link "
-              >
-                <span className="proyect-link">Visitar Web</span>
-                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a> */}
-            </div>
-            <div className="work__item-right">
-              <img
-                className="item__right-image"
-                src={podadeolivosImageLink}
-              ></img>
-            </div>
-          </div>
-          {/*WORK 1 */}
-          <div className="work__item"
-            >
-
-            <div className="work__item-left">
-              <p className="item__left-title">Podadeolivos.com</p>
-              <p className="item__left-subtitle">
-                Sitio web completo para empresa dedicada a la poda de olivos
-              </p>
-
-              <div className="technologies">
-                <div className="technologies__item">HTML</div>
-                <div className="technologies__item">CSS</div>
-                <div className="technologies__item">JS</div>
-                <div className="technologies__item">WORDPRESS</div>
-                <div className="technologies__item">ELEMENTOR</div>
-                <div className="technologies__item">PHP</div>
-              </div>
-
-              {/* <a
-                href="https://www.podadeolivos.com"
-                target="_blank"
-                className="item__left-link "
-              >
-                <span className="proyect-link">Visitar Web</span>
-                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a> */}
-            </div>
-            <div className="work__item-right">
-              <img
-                className="item__right-image"
-                src={podadeolivosImageLink}
-              ></img>
-            </div>
-          </div>
-          {/*WORK 1 */}
-          <div className="work__item"
-            >
-
-            <div className="work__item-left">
-              <p className="item__left-title">Podadeolivos.com</p>
-              <p className="item__left-subtitle">
-                Sitio web completo para empresa dedicada a la poda de olivos
-              </p>
-
-              <div className="technologies">
-                <div className="technologies__item">HTML</div>
-                <div className="technologies__item">CSS</div>
-                <div className="technologies__item">JS</div>
-                <div className="technologies__item">WORDPRESS</div>
-                <div className="technologies__item">ELEMENTOR</div>
-                <div className="technologies__item">PHP</div>
-              </div>
-
-              {/* <a
-                href="https://www.podadeolivos.com"
-                target="_blank"
-                className="item__left-link "
-              >
-                <span className="proyect-link">Visitar Web</span>
-                <img  className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a> */}
-            </div>
-            <div className="work__item-right">
-              <img
-                className="item__right-image"
-                src={podadeolivosImageLink}
-              ></img>
-            </div>
-          </div>
-
-          </div>
 
 
         </div>
@@ -604,29 +481,10 @@ function App() {
           </div>
 
           <div className="contact__container" id="contacto">
-            {/* <div className="contact__title-container-responsive">
-              <span className="contact__title-text">{`- ¿Hablamos? </>`}</span>
-              </div> */}
+   
+            
 
-            <div className="contact__left">
-
-              <p className="contact__left-title">¿Creamos un proyecto? </p>
-
-              <span className="contact__left-subtitle">
-                ¿Hablamos?Contacta conmigo y te resuelvo cualquier duda sin
-                problema
-              </span>
-
-              <a href="" className="contact__left-link">
-                antoniozafra@gmail.com
-                <img className="right-arrow" src={arrowRightImageLink} alt="" />
-              </a>
-            </div>
-
-            <div className="contact__right">
-              <span className="contact__right-title">Contacta Conmigo</span>
-
-              <div className="contact__right-form-box ">
+            {/* <div className="contact__right"> */}
 
                 {message && (
                     <MessageForm title={message.title} subtitle={message.subtitle} />
@@ -635,7 +493,7 @@ function App() {
 
 
                 <form
-                  className="contact__right-form-box"
+                  className="contact__form-box"
                   onSubmit={handdleSubmitForm}
                 >
                   <input
@@ -679,11 +537,10 @@ function App() {
             </div>
           </div>
 
-        </div>
+        {/* </div> */}
 
         {/*FOOTER */}
         <Footer />
-      </div>
     </>
   );
 }

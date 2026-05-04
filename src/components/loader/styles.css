@@ -18,9 +18,9 @@ padding-top: 50vh;
           background-clip: text;
   animation: l7 750ms infinite steps(100);
 
+  z-index: 9999;
 
 }
-
 
 
 
@@ -76,6 +76,8 @@ padding-top: 50vh;
 .loader {
     font-size: 4rem;
   }
-  
 
 }
+  
+
+

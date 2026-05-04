@@ -34,7 +34,7 @@
 @media(max-width:1800px){
   .index,
   .works__container{
-    min-width: 85%;
+    min-width: 90%;
   }
 
   .index__text{

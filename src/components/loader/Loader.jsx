@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-
 import "./styles.css";
 
-const Loader = () => {
+export const Loader = () => {
 
 
   return (
@@ -14,4 +12,3 @@ const Loader = () => {
   );
 };
 
-export default Loader;

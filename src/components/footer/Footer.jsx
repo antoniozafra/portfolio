@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css'
 
-const Footer = () => {
+export const Footer = () => {
 
 const githubImageLink = './img/icons/github.png';
 const linkedinImageLink = "./img/icons/linkedin.png";
@@ -38,4 +38,3 @@ const whatshappImageLink = "./img/icons/whatsapp.png";
   )
 }
 
-export default Footer
