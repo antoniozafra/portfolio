@@ -1,7 +1,11 @@
-import { h1 } from 'motion/react-client'
-import React from 'react'
+import { useTranslation } from "react-i18next"
 
 export const Project = ({project}) => {
+
+ 
+  const {t, i18n} = useTranslation();
+
+
   return (
     <div className='project__container'>
 
@@ -31,11 +35,11 @@ export const Project = ({project}) => {
 
                 <button className="buttons-container__btn">
                   <img  src="./img/icons/cursor.svg" alt="" />
-                  <p className="btn__title">Ver Online</p>
+                  <p className="btn__title">{t("ver-online")}</p>
                 </button>
                 <button className="buttons-container__btn buttons-container___btn-github">
                   <img src="./img/icons/github.png" alt="" />
-                  <p className="btn__title">Ver Código</p>
+                  <p className="btn__title">{t("ver-codigo")}</p>
                 </button>
 
         </div>

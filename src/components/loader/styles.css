@@ -40,20 +40,10 @@ padding-top: 50vh;
     padding-top: 1rem;
 }
 
-
-
   .loader::before {
   content:  var(--text-loader);
   
 }
-
-
-
-
-
-
-
-
 
 
 /*MEDIA QUERIES*/
@@ -79,5 +69,3 @@ padding-top: 50vh;
 
 }
   
-
-

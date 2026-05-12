@@ -1,0 +1,43 @@
+
+
+{
+    "tecnologias-principales"  : "Tecnologías Principales",
+    "sobre-mi-menu" : "Sobre Mi",
+    "proyectos-menu" : "Proyectos",
+    "hablamos-menu" : "¿Hablamos?",
+    "sobre-mi" : "- Sobre Mi </>",
+    "desarrollador-web": "Desarrollador Web",
+    "text-right-subtitle" : "Residente en Córdoba, formación en DAW, experiencia en desarrollo Full Stack ,enfocado en crear aplicaciones funcionales, bien estructuradas y con un diseño totalmente adaptado.",
+    "text-right-subtitle-quote" : "Transformo ideas en software que conecta con las personas y cumple sus objetivos.",
+    "descargar-cv" : "Descargar CV",
+    "buycoffe-button-text" : "Inivtamé a un café",
+    "works__title-text" : "- Proyectos </>",
+    "contact__title-text" : "- ¿Hablamos? </>",
+    "nombre-completo" : "Nombre Completo",
+    "email": "Correo Electrónico",
+    "describe-your-idea" : "Describe tu proyecto aquí",
+    "send-mail" : "Enviar Correo",
+    "footer-text" : " if (teGusta) { contactame(); }",
+
+
+    "_comment2": "TEXTOS DE LA DESCRIPCION DE LOS PROYECTOS , Y BOTONES",
+    "ver-online" : "Ver Online",
+    "ver-codigo" : "Ver Código",
+
+     "proyectos": {
+        "podadeolivos" : {
+            "description" : "Página Coorporativa para empresa del sector agrario"
+        },
+        "alfombrapersonalizada" : {
+            "description" : "Página Coorporativa para empresa del sector textil"
+        },
+        "personaltrainerweb": {
+            "description" : "Página Coorporativa para empresa del sector salud"
+        }   
+    }
+
+
+
+
+
+}

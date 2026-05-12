@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css'
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
 
@@ -8,11 +9,14 @@ const linkedinImageLink = "./img/icons/linkedin.png";
 const whatshappImageLink = "./img/icons/whatsapp.png";
 
 
+const {t, i18n} = useTranslation();
+
   return (
+
 
       <footer className="footer">
           <p className="footer__text">
-            if (teGusta) {"{"} contáctame(); {"}"}
+           {t("footer-text")}
           </p>
 
           <div className="footer__social-container">

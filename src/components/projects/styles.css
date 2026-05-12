@@ -56,12 +56,6 @@ transform: scale(1.03);
 
 
 
-
-.project__container:nth-child(2n) {
-    /* margin-top: 10rem; */
-}
-
-
 .project_image{
 
      border-radius: 2rem; 
@@ -74,4 +68,15 @@ transform: scale(1.03);
 
 .technologies__container-item-project{
     border: 2px solid var(--color-text);
+}
+
+.no-projects-text{
+    width: 50vw;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    /* position: absolute; */
+    /* background-color: red; */
+    font-size: 2rem;
+    color: var(--color-secondary);
 }

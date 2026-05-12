@@ -1,0 +1,42 @@
+
+
+{
+    "_comment": "TEXTOS PRINCIPALES DE LA WEB",
+    
+    "sobre-mi-menu" : "About Me",
+    "proyectos-menu" : "Projects",
+    "hablamos-menu" : "We Talk?",
+    "sobre-mi" : "- About Me </>",
+    "desarrollador-web": "Web Developer",
+    "text-right-subtitle": "Based in Cordoba, with a background in Web Application Development (DAW), experience in Full Stack development, focused on creating functional, well-structured applications with a fully customized design.",
+    "text-right-subtitle-quote": "I transform ideas into software that connects with people and helps them achieve their goals.",
+    "tecnologias-principales"  : "Main Tecnologies",
+    "descargar-cv" : "Download CV",
+    "buycoffe-button-text" : "Buy me a coffe!",
+    "works__title-text" : "- Projects </>",
+    "contact__title-text" : "- Can Speak? </>",
+    "nombre-completo": "Full Name",
+    "email": "Email",
+    "describe-your-idea" : "Decribe your idea here",
+    "send-mail" : "Send Mail",
+    "footer-text" : " if (doYouLike) { contactMe(); }",
+    
+    "_comment2": "TEXTOS DE LA DESCRIPCION DE LOS PROYECTOS , Y BOTONES",
+    "ver-online" : "Show Online",
+    "ver-codigo" : "Show Code",
+
+    "proyectos": {
+        "podadeolivos" : {
+            "description" : "Corporate website for a company in the agricultural sector"
+        } ,
+        "alfombrapersonalizada" : {
+            "description" : "Corporate website for a company in the textil sector"
+        },
+        "personaltrainerweb" : {
+            "description" : "Corporate website for a company in the health sector"
+        }
+    }
+
+
+
+}

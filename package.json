@@ -15,9 +15,11 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "gh-pages": "^6.3.0",
+    "i18next": "^26.0.10",
     "motion": "^12.23.21",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-i18next": "^17.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
